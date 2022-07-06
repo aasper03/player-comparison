@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta3/css/bootstrap-select.min.css" integrity="sha512-g2SduJKxa4Lbn3GW+Q7rNz+pKP9AWMR++Ta8fgwsZRCUsawjPvF/BxSMkGS61VsR9yinGoEgrHPGPn2mrj8+4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .btn {
+                font-size: 40px;
+            }
+            .vertical-center {
+                min-height: 100%;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+            }
+            img {
+                align-self: center;
+                height: 450px;
+            }
+            table {
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron vertical-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <img src="{{src1}}">
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">{{p1.iloc[0]['Name']}}</th>
+                                    <th scope="col">{{p2.iloc[0]['Name']}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Team</th>
+                                    <td>{{p1.iloc[0]['Team']}}</td>
+                                    <td>{{p2.iloc[0]['Team']}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Position</th>
+                                    <td>{{p1.iloc[0]['Position']}}</td>
+                                    <td>{{p2.iloc[0]['Position']}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Height</th>
+                                    {% if p1.iloc[0]['Height'].split("-")[0] > p2.iloc[0]['Height'].split("-")[0] %}
+                                        <td class="table-success">{{p1.iloc[0]['Height']}}</td>
+                                        <td class="table-danger">{{p2.iloc[0]['Height']}}</td>
+                                    {% elif p1.iloc[0]['Height'].split("-")[0] == p2.iloc[0]['Height'].split("-")[0] %}
+                                        {% if p1.iloc[0]['Height'].split("-")[1] | int > p2.iloc[0]['Height'].split("-")[1] | int %}
+                                            <td class="table-success">{{p1.iloc[0]['Height']}}</td>
+                                            <td class="table-danger">{{p2.iloc[0]['Height']}}</td>
+                                        {% elif p1.iloc[0]['Height'].split("-")[1] == p2.iloc[0]['Height'].split("-")[1] %}
+                                            <td>{{p1.iloc[0]['Height']}}</td>
+                                            <td>{{p2.iloc[0]['Height']}}</td>
+                                        {% else %}
+                                            <td class="table-danger">{{p1.iloc[0]['Height']}}</td>
+                                            <td class="table-success">{{p2.iloc[0]['Height']}}</td>
+                                        {% endif %}
+                                    {% else %}
+                                        <td class="table-danger">{{p1.iloc[0]['Height']}}</td>
+                                        <td class="table-success">{{p2.iloc[0]['Height']}}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <th scope="row">Weight</th>
+                                    {% if p1.iloc[0]['Weight'] > p2.iloc[0]['Weight'] %}
+                                        <td class="table-success">{{p1.iloc[0]['Weight']}}</td>
+                                        <td class="table-danger">{{p2.iloc[0]['Weight']}}</td>
+                                    {% else %}
+                                        <td class="table-danger">{{p1.iloc[0]['Weight']}}</td>
+                                        <td class="table-success">{{p2.iloc[0]['Weight']}}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <th scope="row">Age</th>
+                                    {% if p2.iloc[0]['Age'] > p1.iloc[0]['Age'] %}
+                                        <td class="table-success">{{p1.iloc[0]['Age']}}</td>
+                                        <td class="table-danger">{{p2.iloc[0]['Age']}}</td>
+                                    {% else %}
+                                        <td class="table-danger">{{p1.iloc[0]['Age']}}</td>
+                                        <td class="table-success">{{p2.iloc[0]['Age']}}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <th scope="row">PTS</th>
+                                    {% if p1.iloc[0]['PTS'] > p2.iloc[0]['PTS'] %}
+                                        <td class="table-success">{{p1.iloc[0]['PTS']}}</td>
+                                        <td class="table-danger">{{p2.iloc[0]['PTS']}}</td>
+                                    {% else %}
+                                        <td class="table-danger">{{p1.iloc[0]['PTS']}}</td>
+                                        <td class="table-success">{{p2.iloc[0]['PTS']}}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <th scope="row">TRB</th>
+                                    {% if p1.iloc[0]['TRB'] > p2.iloc[0]['TRB'] %}
+                                        <td class="table-success">{{p1.iloc[0]['TRB']}}</td>
+                                        <td class="table-danger">{{p2.iloc[0]['TRB']}}</td>
+                                    {% else %}
+                                        <td class="table-danger">{{p1.iloc[0]['TRB']}}</td>
+                                        <td class="table-success">{{p2.iloc[0]['TRB']}}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <th scope="row">AST</th>
+                                    {% if p1.iloc[0]['AST'] > p2.iloc[0]['AST'] %}
+                                        <td class="table-success">{{p1.iloc[0]['AST']}}</td>
+                                        <td class="table-danger">{{p2.iloc[0]['AST']}}</td>
+                                    {% else %}
+                                        <td class="table-danger">{{p1.iloc[0]['AST']}}</td>
+                                        <td class="table-success">{{p2.iloc[0]['AST']}}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <th scope="row">FG%</th>
+                                    {% if p1.iloc[0]['FG%'] > p2.iloc[0]['FG%'] %}
+                                        <td class="table-success">{{p1.iloc[0]['FG%']}}</td>
+                                        <td class="table-danger">{{p2.iloc[0]['FG%']}}</td>
+                                    {% else %}
+                                        <td class="table-danger">{{p1.iloc[0]['FG%']}}</td>
+                                        <td class="table-success">{{p2.iloc[0]['FG%']}}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <th scope="row">FG3%</th>
+                                    {% if p1.iloc[0]['FG3%'] > p2.iloc[0]['FG3%'] %}
+                                        <td class="table-success">{{p1.iloc[0]['FG3%']}}</td>
+                                        <td class="table-danger">{{p2.iloc[0]['FG3%']}}</td>
+                                    {% else %}
+                                        <td class="table-danger">{{p1.iloc[0]['FG3%']}}</td>
+                                        <td class="table-success">{{p2.iloc[0]['FG3%']}}</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <th scope="row">FT%</th>
+                                    {% if p1.iloc[0]['FT%'] > p2.iloc[0]['FT%'] %}
+                                        <td class="table-success">{{p1.iloc[0]['FT%']}}</td>
+                                        <td class="table-danger">{{p2.iloc[0]['FT%']}}</td>
+                                    {% else %}
+                                        <td class="table-danger">{{p1.iloc[0]['FT%']}}</td>
+                                        <td class="table-success">{{p2.iloc[0]['FT%']}}</td>
+                                    {% endif %}
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center">
+                        <img src="{{src2}}">
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <a href="/" class="btn btn-primary w-50">Compare Again</a>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta3/js/bootstrap-select.min.js" integrity="sha512-yrOmjPdp8qH8hgLfWpSFhC/+R9Cj9USL8uJxYIveJZGAiedxyIxwNw4RsLDlcjNlIRR4kkHaDHSmNHAkxFTmgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta3/css/bootstrap-select.min.css" integrity="sha512-g2SduJKxa4Lbn3GW+Q7rNz+pKP9AWMR++Ta8fgwsZRCUsawjPvF/BxSMkGS61VsR9yinGoEgrHPGPn2mrj8+4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .filter-option {
+                font-size: 60px;
+            }
+            .dropdown-item {
+                font-size: 60px;
+            }
+            .btn {
+                font-size: 60px;
+            }
+            .vertical-center {
+                min-height: 80%;
+                min-height: 80vh;
+                display: flex;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron vertical-center">
+            <div class="container">
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col-md-8 d-flex justify-content-center">
+                            <div class="vstack gap-4">
+                                <select class="selectpicker w-100" data-live-search="true" data-live-search-style="startsWith" data-size="5" title="Choose player 1" name="p1">
+                                    {% for player in playerlist %}
+                                        <option value="{{player}}">{{player}}</option>
+                                    {% endfor %}
+                                </select>
+                                <select class="selectpicker w-100" data-live-search="true" data-live-search-style="startsWith" data-size="3" title="Choose player 2" name="p2">
+                                    {% for player in playerlist %}
+                                        <option value="{{player}}">{{player}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary w-100">Compare</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta3/js/bootstrap-select.min.js" integrity="sha512-yrOmjPdp8qH8hgLfWpSFhC/+R9Cj9USL8uJxYIveJZGAiedxyIxwNw4RsLDlcjNlIRR4kkHaDHSmNHAkxFTmgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </body>
+</html>
