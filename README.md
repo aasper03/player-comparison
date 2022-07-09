@@ -6,5 +6,5 @@ This project uses Selenium to scrape data from basketball-reference.com. Player 
 ### Installation
 * Clone the repository
 * Run scraping.ipynb to update nba.csv with current player data
-* Open a terminal and run `python "main.py"`
-* Copy url from terminal and open in browser
+* Open a terminal in the same directory as `main.py` and run `python "main.py"`
+* Copy the local host url from terminal and open in browser
